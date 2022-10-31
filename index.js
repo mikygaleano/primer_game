@@ -1,63 +1,50 @@
-var player = 0;
-var maquina = 0;
-var perdido = 0;
-var ganado = 0;
-var empatado = 0;
-
+// juego piedra, papel o tijera
 // opción maquina
-function getRandom (max, min) {
-    return Math.floor(Math.random() * (max - min) + min);
+function getRandom (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// combates
-function partidas () {
-    // 1 piedra, 2 papel, 3 tijera
-    player = prompt('Elige por favor!!: ');
+
+// eligieron
+
+function elegir (eleccion) {
+    let opcion = '';
+    if (eleccion == 1) {
+        opcion = 'Piedra'
+    }
+    if (eleccion == 2) {
+        opcion = 'Papel'
+    }
+    if (eleccion == 3) {
+        opcion = 'Tijera'
+    } else {
+        opcion = 'Nulo'
+    }
+    return opcion;
+}
+
+// combate 
+
+function combate () {
     if (maquina == player) {
-        alert('Eligieron lo mismo')
         alert('Empate');
     }
     else if (player == 1 && maquina == 3) {
-        ganado = ganado + 1;
-        alert('Elegiste piedra')
-        alert('La maquina eligio tijera')
         alert('Ganaste');
+        ganado = ganado + 1;
     }
     else if (player == 2 && maquina == 1) {
-        ganado = ganado + 1;
-        alert('Elegiste papel')
-        alert('La maquina eligio piedra')
         alert('Ganaste');
+        ganado = ganado + 1;
     }
     else if (player == 3 && maquina == 2) {
+        alert('Ganaste');
         ganado = ganado + 1;
-        alert('Elegiste tijera')
-        alert('La maquina eligio papel')
-        alert('Ganaste');
-    } 
-    // maquina
-    else if (maquina == 3 && player == 2) {
-        perdido = perdido + 1;
-        alert('Elegiste papel')
-        alert('La maquina eligio tijera')
-        alert('Perdiste');
-    }
-    else if (maquina == 2 && player == 1) {
-        perdido = perdido + 1;
-        alert('Elegiste piedra')
-        alert('La maquina eligio papel')
-        alert('Perdiste');
     } else {
+        alert('Perdiste');
         perdido = perdido + 1;
-        alert('Elegiste tijera')
-        alert('La maquina eligio piedra')
-        alert('Ganaste');
     }
-}
 
-
-// resultado
-function resultado () {
     if (ganado > perdido) {
         alert('Ganaste campeón!!');
     } else {
@@ -65,9 +52,20 @@ function resultado () {
     }
 }
 
+var player = 0;
+var maquina = 0;
+var perdido = 0;
+var ganado = 0;
 
-alert('Bienvenido al juego');
-alert('para piedra elige 1, para papel elige 2, para tijera elige 3');
-getRandom(maquina, 3, 1);
-partidas();
-resultado();
+
+while (ganado < 3 && perdido < 3) {
+    alert('Bienvenido al juego');
+    alert('para piedra elige 1, para papel elige 2, para tijera elige 3');
+    maquina = getRandom(3, 1);
+    player = prompt('Elige por favor!!: ');
+    alert(`Elegiste ${elegir(player)}`); 
+    alert(`La maquina eligio ${elegir(maquina)}`);
+    combate();
+}
+
+alert(`Ganaste ${ganado} veces, y perdiste ${perdido} veces`)
