@@ -12,13 +12,13 @@ function elegir (eleccion) {
     if (eleccion == 1) {
         opcion = 'Piedra'
     }
-    if (eleccion == 2) {
+    else if (eleccion == 2) {
         opcion = 'Papel'
     }
-    if (eleccion == 3) {
+    else if (eleccion == 3) {
         opcion = 'Tijera'
     } else {
-        opcion = 'Nulo'
+        opcion = 'Mala decición'
     }
     return opcion;
 }
@@ -44,12 +44,6 @@ function combate () {
         alert('Perdiste');
         perdido = perdido + 1;
     }
-
-    if (ganado > perdido) {
-        alert('Ganaste campeón!!');
-    } else {
-        alert('Haz perdido, sigue intentando')
-    }
 }
 
 var player = 0;
@@ -68,4 +62,9 @@ while (ganado < 3 && perdido < 3) {
     combate();
 }
 
+if (ganado > perdido) {
+    alert('Ganaste campeón!!');
+} else {
+    alert('Haz perdido, sigue intentando')
+}
 alert(`Ganaste ${ganado} veces, y perdiste ${perdido} veces`)
