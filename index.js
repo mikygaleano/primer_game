@@ -52,19 +52,21 @@ var perdido = 0;
 var ganado = 0;
 
 
-while (ganado < 3 && perdido < 3) {
-    alert('Bienvenido al juego');
-    alert('para piedra elige 1, para papel elige 2, para tijera elige 3');
-    maquina = getRandom(3, 1);
-    player = prompt('Elige por favor!!: ');
-    alert(`Elegiste ${elegir(player)}`); 
-    alert(`La maquina eligio ${elegir(maquina)}`);
-    combate();
-}
-
-if (ganado > perdido) {
-    alert('Ganaste campeón!!');
-} else {
-    alert('Haz perdido, sigue intentando')
-}
-alert(`Ganaste ${ganado} veces, y perdiste ${perdido} veces`)
+window.addEventListener("load", () => {
+    while (ganado < 3 && perdido < 3) {
+        alert('Bienvenido al juego');
+        alert('para piedra elige 1, para papel elige 2, para tijera elige 3');
+        maquina = getRandom(3, 1);
+        player = prompt('Elige por favor!!: ');
+        alert(`Elegiste ${elegir(player)}`); 
+        alert(`La maquina eligio ${elegir(maquina)}`);
+        combate();
+        }
+    
+        if (ganado > perdido) {
+            alert('Ganaste campeón!!');
+        } else {
+            alert('Haz perdido, sigue intentando')
+        }
+    alert(`Ganaste ${ganado} veces, y perdiste ${perdido} veces`)
+})
